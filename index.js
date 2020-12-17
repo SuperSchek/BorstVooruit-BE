@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const server = require('http').createServer(app)
-const port = process.env.PORT || 2999
+const port = 2999
 const io = require('socket.io')(server, {
   cors: {
     origin: "*",
@@ -24,6 +24,12 @@ let amountOfUsers = 0
 io.on('connection', socket => {
   let userHasBeenAdded = false
 
+  socket.on('checkAuthentication', () => {
+    socket.emit('authenticationChecked', userHasBeenAdded => {
+
+    })
+  })
+
   /**
    * Handle user login
    */
@@ -43,7 +49,9 @@ io.on('connection', socket => {
      */
     socket.emit('userHasLoggedIn', {
       amountOfUsers
-    });
+    })
+
+    console.log(`${socket.username} has logged in.`)
 
     /**
      * Notify all clients that a new user has joined!
@@ -51,7 +59,7 @@ io.on('connection', socket => {
     socket.broadcast.emit('userAdded', {
       username: socket.username,
       amountOfUsers
-    });
+    })
   })
 
   /**
