@@ -3,8 +3,13 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const server = require('http').createServer(app)
-const io = require('socket.io')(server)
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 2999
+const io = require('socket.io')(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+})
 
 server.listen(port, () => {
   console.log('Server listening at port %d', port)

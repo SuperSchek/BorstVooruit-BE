@@ -1,5 +1,5 @@
 {
-  "name": "BorstVooruit-BE",
+  "name": "borstvooruit-be",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -13,7 +13,6 @@
     "socket.io": "^3.0.4"
   },
   "devDependencies": {
-    "jest": "^26.6.3",
     "nodemon": "^2.0.6"
   }
 }
