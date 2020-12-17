@@ -25,9 +25,7 @@ io.on('connection', socket => {
   let userHasBeenAdded = false
 
   socket.on('checkAuthentication', () => {
-    socket.emit('authenticationChecked', userHasBeenAdded => {
-
-    })
+    socket.emit('authenticationChecked', userHasBeenAdded)
   })
 
   /**
