@@ -66,11 +66,13 @@ io.on('connection', socket => {
     }
   })
 
+  /**
+   * Emits message to all connected clients
+   */
   socket.on('sendMessage', (data) => {
-    // we tell the client to execute 'new message'
-    socket.broadcast.emit('MessageSent', {
+    socket.broadcast.emit('messageSent', {
       username: socket.username,
       message: data
-    });
-  });
+    })
+  })
 })
